@@ -2,14 +2,13 @@ from turtle import *
 import time
 import random
 
-
 class Snake():
     def __init__(self):
         self.body = []
         self.speed = 20
         self.length = 2
         self.create_snake()
-        
+        self.head = self.body[0]
         
      
     def get_positions(self):
@@ -35,17 +34,19 @@ class Snake():
             self.body.append(segment)
     
     def detect_colision_with_food(self, food_position):
-        return self.body[0].distance(food_position)
+        return self.head.distance(food_position)
     
     def detect_colision_with_wall(self,screen_h,screen_w):
-        head = self.body[0]
-        if self.body[0].xcor() > screen_w / 2 or self.body[0].xcor() < -1 * (screen_w / 2):
-            head.setx(-1 * self.body[0].xcor())
-        elif self.body[0].ycor() > screen_h / 2 or self.body[0].ycor() < -1 * (screen_h / 2):
-            head.sety(-1 * self.body[0].ycor())
+        if self.head.xcor() > screen_w / 2 or self.head.xcor() < -1 * (screen_w / 2):
+            self.head.setx(-1 * self.head.xcor())
+        elif self.head.ycor() > screen_h / 2 or self.head.ycor() < -1 * (screen_h / 2):
+            self.head.sety(-1 * self.head.ycor())
 
     def detect_colision_with_self(self):
-        pass
+        for i in range(1,len(self.body)):
+            if self.head.distance(self.body[i].position()) < 1:
+                return False
+        return True
     
     def add_segment(self):
         segment = Turtle()
@@ -55,19 +56,15 @@ class Snake():
         self.body.append(segment)
         
     def go_up(self):
-        print('up')
         self.body[0].setheading(90)
                     
     def go_down(self):
-        print('down')
         self.body[0].setheading(270)
         
     def go_left(self):      
-        print('left')
         self.body[0].setheading(180)
         
     def go_right(self):
-        print('right')
         self.body[0].setheading(0)
     
     
@@ -76,7 +73,7 @@ if __name__ == "__main__":
     snake = Snake()
 
     while True:
-        time.sleep(0.5)
+        time.sleep(0.1)
         snake.move()
    
 

@@ -20,16 +20,18 @@ class Game():
         self.screen.onkeypress(self.snake.go_left, "Left")
         self.screen.onkeypress(self.snake.go_right, "Right")
 
-
+    def game_over(self):
+        self.pen = Turtle()
+        self.pen.hideturtle()
+        self.pen.write(f"GAME OVER", align="center", font=("courier", 34, "bold"))
         
 if __name__ == "__main__":
     game = Game()
-    print(game.screen.window_height())
     window_h = game.screen.window_height()
     window_w = game.screen.window_width()
     
     while game.is_on:
-        game.screen.tracer(8)
+        game.screen.tracer(8,25)
         time.sleep(0.1)
         game.screen.listen()
         game.snake.move()
@@ -40,8 +42,12 @@ if __name__ == "__main__":
             game.score.increase_score()
             game.snake.add_segment()
         
-        if game.snake.detect_colision_with_self(window_h, window_w):
-           pass
+        if game.snake.detect_colision_with_wall(window_h,window_w):
+            pass
+       
+        game.is_on = game.snake.detect_colision_with_self()
+        
+    game.game_over()
         
         
-    
+    mainloop()

@@ -9,8 +9,7 @@ class Food():
         self.food = Turtle()
         self.food.shape("circle")
         self.food.shapesize(0.5,0.5,0.5)
-        # self.food.shapesize(10,10,10)
-
+        self.change_position()
         
     def change_position(self):
         random_x = random.randint(-380, 380)

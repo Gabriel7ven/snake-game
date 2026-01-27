@@ -7,7 +7,7 @@ class Snake():
     def __init__(self):
         self.body = []
         self.speed = 20
-        self.length = 3
+        self.length = 2
         self.create_snake()
         
         
@@ -37,12 +37,21 @@ class Snake():
     def detect_colision_with_food(self, food_position):
         return self.body[0].distance(food_position)
     
+    def detect_colision_with_wall(self,screen_h,screen_w):
+        head = self.body[0]
+        if self.body[0].xcor() > screen_w / 2 or self.body[0].xcor() < -1 * (screen_w / 2):
+            head.setx(-1 * self.body[0].xcor())
+        elif self.body[0].ycor() > screen_h / 2 or self.body[0].ycor() < -1 * (screen_h / 2):
+            head.sety(-1 * self.body[0].ycor())
+
+    def detect_colision_with_self(self):
+        pass
+    
     def add_segment(self):
         segment = Turtle()
         segment.shape("square")
         segment.penup()
-        # segment.teleport(-i * 20, 0)
-        # segment.color(colors[random.randint(0, len(colors)-1)])
+        segment.goto(self.get_positions()[len(self.body)-1])
         self.body.append(segment)
         
     def go_up(self):

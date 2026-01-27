@@ -24,17 +24,24 @@ class Game():
         
 if __name__ == "__main__":
     game = Game()
+    print(game.screen.window_height())
+    window_h = game.screen.window_height()
+    window_w = game.screen.window_width()
+    
     while game.is_on:
         game.screen.tracer(8)
         time.sleep(0.1)
         game.screen.listen()
         game.snake.move()
-        
+
         # detecting collision
         if game.snake.detect_colision_with_food(game.food.current_position()) < 15:
             game.food.change_position()
             game.score.increase_score()
             game.snake.add_segment()
+        
+        if game.snake.detect_colision_with_self(window_h, window_w):
+           pass
         
         
     

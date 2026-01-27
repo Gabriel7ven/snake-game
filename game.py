@@ -14,7 +14,7 @@ class Game():
         self.is_on = True 
         self.score = Score()
         self.snake = Snake()
-        self.food = Food()
+        self.food  = Food()
         self.screen.onkeypress(self.snake.go_up, "Up")
         self.screen.onkeypress(self.snake.go_down, "Down")
         self.screen.onkeypress(self.snake.go_left, "Left")

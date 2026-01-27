@@ -24,7 +24,14 @@ class Game():
         self.pen = Turtle()
         self.pen.hideturtle()
         self.pen.write(f"GAME OVER", align="center", font=("courier", 34, "bold"))
-        
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     game = Game()
     window_h = game.screen.window_height()
@@ -36,18 +43,13 @@ if __name__ == "__main__":
         game.screen.listen()
         game.snake.move()
 
-        # detecting collision
         if game.snake.detect_colision_with_food(game.food.current_position()) < 15:
             game.food.change_position()
             game.score.increase_score()
             game.snake.add_segment()
         
-        if game.snake.detect_colision_with_wall(window_h,window_w):
-            pass
-       
+        game.snake.detect_colision_with_wall(window_h,window_w)
         game.is_on = game.snake.detect_colision_with_self()
         
     game.game_over()
-        
-        
     mainloop()

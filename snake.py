@@ -31,12 +31,20 @@ class Snake():
             segment.shape("square")
             segment.penup()
             segment.teleport(-i * 20, 0)
-            segment.color(colors[random.randint(0, len(colors))])
+            segment.color(colors[random.randint(0, len(colors)-1)])
             self.body.append(segment)
     
     def detect_colision_with_food(self, food_position):
         return self.body[0].distance(food_position)
-            
+    
+    def add_segment(self):
+        segment = Turtle()
+        segment.shape("square")
+        segment.penup()
+        # segment.teleport(-i * 20, 0)
+        # segment.color(colors[random.randint(0, len(colors)-1)])
+        self.body.append(segment)
+        
     def go_up(self):
         print('up')
         self.body[0].setheading(90)

@@ -33,6 +33,8 @@ if __name__ == "__main__":
         # detecting collision
         if game.snake.detect_colision_with_food(game.food.current_position()) < 15:
             game.food.change_position()
+            game.score.increase_score()
+            game.snake.add_segment()
         
         
     

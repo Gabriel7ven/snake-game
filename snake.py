@@ -16,7 +16,7 @@ class Snake():
 
     def move(self):
         positions = self.get_positions()
-        self.body[0].fd(20)
+        self.head.fd(20)
         for i in range(1, len(self.body)):
             self.body[i].goto(positions[i-1])  
     
@@ -24,13 +24,13 @@ class Snake():
         self.speed += 5
        
     def create_snake(self):
-        colors = ["blue","yellow","black","gray","red","green","brown","pink"]
+        # colors = ["blue","yellow","black","gray","red","green","brown","pink"]
         for i in range(self.length):
             segment = Turtle()
             segment.shape("square")
             segment.penup()
             segment.teleport(-i * 20, 0)
-            segment.color(colors[random.randint(0, len(colors)-1)])
+            # segment.color(colors[random.randint(0, len(colors)-1)])
             self.body.append(segment)
     
     def detect_colision_with_food(self, food_position):
@@ -56,16 +56,20 @@ class Snake():
         self.body.append(segment)
         
     def go_up(self):
-        self.body[0].setheading(90)
+        if self.head.heading() != 270:
+            self.head.setheading(90)
                     
     def go_down(self):
-        self.body[0].setheading(270)
+        if self.head.heading() != 90:
+            self.head.setheading(270)
         
     def go_left(self):      
-        self.body[0].setheading(180)
+        if self.head.heading() != 0:
+            self.head.setheading(180)
         
     def go_right(self):
-        self.body[0].setheading(0)
+        if self.head.heading() != 180:
+            self.head.setheading(0)
     
     
         

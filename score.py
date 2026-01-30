@@ -2,10 +2,10 @@ from turtle import *
 import time
 
 class Score():
-    def __init__(self):
+    def __init__(self,screen_h):
         self.score = 0
         self.pen = Turtle()
-        self.pen.teleport(0, 350)
+        self.pen.teleport(0, 0.4 * screen_h)
         self.pen.hideturtle()
         self.update_score()
         

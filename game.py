@@ -10,11 +10,11 @@ class Game():
     def __init__(self):
         self.screen = Screen()
         self.screen.title("Snake Game")
-        self.screen.setup(width=900, height=800)
+        self.screen.setup(width=900, height=700)
         self.is_on = True 
-        self.score = Score()
+        self.score = Score(self.screen.window_height())
         self.snake = Snake()
-        self.food  = Food()
+        self.food  = Food(self.screen.window_width(),self.screen.window_height())
         self.screen.onkeypress(self.snake.go_up, "Up")
         self.screen.onkeypress(self.snake.go_down, "Down")
         self.screen.onkeypress(self.snake.go_left, "Left")

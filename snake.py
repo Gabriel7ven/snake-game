@@ -10,7 +10,6 @@ class Snake():
         self.create_snake()
         self.head = self.body[0]
         
-     
     def get_positions(self):
         return [segment.position() for segment in self.body]
 
@@ -22,7 +21,6 @@ class Snake():
     
     def accelerate(self):
         self.speed += 5
-       
     def create_snake(self):
         # colors = ["blue","yellow","black","gray","red","green","brown","pink"]
         for i in range(self.length):
@@ -79,6 +77,5 @@ if __name__ == "__main__":
     while True:
         time.sleep(0.1)
         snake.move()
-   
 
     

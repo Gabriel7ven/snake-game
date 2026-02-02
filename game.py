@@ -38,7 +38,7 @@ if __name__ == "__main__":
     window_w = game.screen.window_width()
     
     while game.is_on:
-        game.screen.tracer(8,25)
+        game.screen.tracer(100)
         time.sleep(0.1)
         game.screen.listen()
         game.snake.move()
